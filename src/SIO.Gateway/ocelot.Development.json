@@ -1,0 +1,24 @@
+{
+    "Routes": [
+      {
+        "DownstreamPathTemplate": "/v1/",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "host.docker.internal",
+            "Port": 44363
+          }
+        ],
+        "UpstreamPathTemplate": "/v1/document/",
+        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Document",
+          "AllowedScopes": []
+        },
+        "DangerousAcceptAnyServerCertificateValidator": true
+      }
+    ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44380"
+  }
+}

@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  sio.gateway:
+    image: ${DOCKER_REGISTRY-}siogateway
+    build:
+      context: .
+      dockerfile: src/SIO.Gateway/Dockerfile
+networks:    
+  default:
+    external:
+        name: sio.network
