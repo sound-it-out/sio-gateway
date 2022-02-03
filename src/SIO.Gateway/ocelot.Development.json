@@ -1,23 +1,75 @@
 {
-    "Routes": [
-      {
-        "DownstreamPathTemplate": "/v1/",
-        "DownstreamScheme": "https",
-        "DownstreamHostAndPorts": [
-          {
-            "Host": "host.docker.internal",
-            "Port": 44363
-          }
-        ],
-        "UpstreamPathTemplate": "/v1/document/",
-        "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-        "AuthenticationOptions": {
-          "AuthenticationProviderKey": "Document",
-          "AllowedScopes": []
-        },
-        "DangerousAcceptAnyServerCertificateValidator": true
-      }
-    ],
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/v1/",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 44363
+        }
+      ],
+      "UpstreamPathTemplate": "/v1/document/",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Document",
+        "AllowedScopes": []
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "DownstreamPathTemplate": "/v1/upload",
+      "DownstreamScheme": "https",
+      "DownstreamMethod": "Post",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 44363
+        }
+      ],
+      "UpstreamPathTemplate": "/v1/document/upload",
+      "UpstreamHttpMethod": [ "Post" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Document",
+        "AllowedScopes": []
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "DownstreamPathTemplate": "/v1/{id}/download",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 44363
+        }
+      ],
+      "UpstreamPathTemplate": "/v1/document/{id}/download",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Document",
+        "AllowedScopes": []
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    {
+      "DownstreamPathTemplate": "/v1/options",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "host.docker.internal",
+          "Port": 44375
+        }
+      ],
+      "UpstreamPathTemplate": "/v1/translation/options",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Translation",
+        "AllowedScopes": []
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true
+    }
+  ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:44380"
   }
